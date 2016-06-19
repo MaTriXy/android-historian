@@ -1,29 +1,16 @@
-/*
- * Copyright (C) 2015 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.designdemo.uaha;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
@@ -52,7 +39,7 @@ public class DetailActivity extends AppCompatActivity {
     private CollapsingToolbarLayout collapsingToolbar;
 
     private OkHttpClient okclient;
-    private int os_version;
+    private int osVersion;
 
 
     @Override
@@ -62,17 +49,21 @@ public class DetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         final String androidName = intent.getStringExtra(EXTRA_NAME);
-        os_version = VersionData.getOsNum(androidName);
+        osVersion = VersionData.getOsNum(androidName);
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbar.setTitle(VersionData.getProductName(os_version));
+        collapsingToolbar.setTitle(VersionData.getProductName(osVersion));
 
         okclient = new OkHttpClient();
         loadBackdrop();
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            postponeEnterTransition();
+        }
 
         setupViews();
         setupFab();
@@ -80,9 +71,20 @@ public class DetailActivity extends AppCompatActivity {
         new WikiPullTask().execute();
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            if (hasFocus) {
+                startPostponedEnterTransition();
+            }
+        }
+    }
+
     private void loadBackdrop() {
         final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
-        Glide.with(this).load(VersionData.getOsDrawable(os_version)).centerCrop().into(imageView);
+        Glide.with(this).load(VersionData.getOsDrawable(osVersion)).centerCrop().into(imageView);
     }
 
     private void setupViews() {
@@ -101,11 +103,11 @@ public class DetailActivity extends AppCompatActivity {
 
         fab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                PrefsUtil.toggleFavorite(getApplicationContext(), os_version);
+                PrefsUtil.toggleFavorite(getApplicationContext(), osVersion);
                 setFabIcon();
 
                 //Send the user a message to let them know change was made
-                View mainView = (View) findViewById(R.id.main_content);
+                View mainView = findViewById(R.id.main_content);
                 Snackbar.make(mainView, R.string.favorite_confirm, Snackbar.LENGTH_LONG)
                         .show(); // Don’t forget to show!
             }
@@ -113,35 +115,47 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void setFabIcon() {
-        if (PrefsUtil.isFavorite(getApplicationContext(), os_version)) {
-            fab.setImageDrawable(this.getResources().getDrawable(R.drawable.ic_favorite_on));
+        if (PrefsUtil.isFavorite(getApplicationContext(), osVersion)) {
+            fab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_favorite_on));
         } else {
-            fab.setImageDrawable(this.getResources().getDrawable(R.drawable.ic_favorite_off));
+            fab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_favorite_off));
         }
     }
 
     private void setupPalette() {
-        Bitmap bm = BitmapFactory.decodeResource(getResources(), VersionData.getOsDrawable(os_version));
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), VersionData.getOsDrawable(osVersion));
 
         Palette.PaletteAsyncListener listener = new Palette.PaletteAsyncListener() {
             public void onGenerated(Palette palette) {
                 Log.d("Palette", "Palette has been generated");
                 TextView pal_vib = (TextView) findViewById(R.id.palette_vibrant);
+                TextView perc1left = (TextView) findViewById(R.id.perc1_left);
+                perc1left.setBackgroundColor(palette.getVibrantColor(0x000000));
                 pal_vib.setBackgroundColor(palette.getVibrantColor(0x000000));
 
                 TextView pal_vib_dark = (TextView) findViewById(R.id.palette_vibrant_dark);
+                TextView perc1mid = (TextView) findViewById(R.id.perc1_middle);
+                perc1mid.setBackgroundColor(palette.getDarkVibrantColor(0x000000));
                 pal_vib_dark.setBackgroundColor(palette.getDarkVibrantColor(0x000000));
 
                 TextView pal_vib_light = (TextView) findViewById(R.id.palette_vibrant_light);
+                TextView perc1right = (TextView) findViewById(R.id.perc1_right);
+                perc1right.setBackgroundColor(palette.getLightVibrantColor(0x000000));
                 pal_vib_light.setBackgroundColor(palette.getLightVibrantColor(0x000000));
 
                 TextView pal_muted = (TextView) findViewById(R.id.palette_muted);
+                TextView perc2left = (TextView) findViewById(R.id.perc2_left);
+                perc2left.setBackgroundColor(palette.getMutedColor(0x000000));
                 pal_muted.setBackgroundColor(palette.getMutedColor(0x000000));
 
                 TextView pal_muted_dark = (TextView) findViewById(R.id.palette_muted_dark);
+                TextView perc2mid = (TextView) findViewById(R.id.perc2_middle);
+                perc2mid.setBackgroundColor(palette.getDarkMutedColor(0x000000));
                 pal_muted_dark.setBackgroundColor(palette.getDarkMutedColor(0x000000));
 
                 TextView pal_muted_light = (TextView) findViewById(R.id.palette_muted_light);
+                TextView perc2right = (TextView) findViewById(R.id.perc2_right);
+                perc2right.setBackgroundColor(palette.getLightMutedColor(0x000000));
                 pal_muted_light.setBackgroundColor(palette.getLightMutedColor(0x000000));
 
                 //Noticed the Expanded white doesn't show everywhere, use Palette to fix this
@@ -150,7 +164,7 @@ public class DetailActivity extends AppCompatActivity {
         };
 
         // Start this Async, because it takes some time to generate
-        Palette.generateAsync(bm, listener);
+        Palette.from(bm).generate(listener);
 
     }
 
@@ -167,7 +181,7 @@ public class DetailActivity extends AppCompatActivity {
         protected String doInBackground(String... params) {
             String respStr = "";
 
-            String req = "https://en.wikipedia.org/w/api.php?action=query&titles=" + VersionData.getWikiQuery(os_version) + "&prop=revisions&rvprop=content&format=jsonfm";
+            String req = "https://en.wikipedia.org/w/api.php?action=query&titles=" + VersionData.getWikiQuery(osVersion) + "&prop=revisions&rvprop=content&format=jsonfm";
             Log.d("NET", "WIKIPedia request: " + req);
 
             Request request = new Request.Builder()
