@@ -1,302 +1,941 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
-    android:id="@+id/drawer_layout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <android.support.design.widget.CoordinatorLayout
-        android:id="@+id/main_content"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/user_main_coordinator"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="?attr/colorSurface">
 
-        <android.support.design.widget.AppBarLayout
-            android:id="@+id/appbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:layout_scrollFlags="scroll|enterAlways"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-
-        </android.support.design.widget.AppBarLayout>
-
-
-        <android.support.v4.widget.NestedScrollView
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/user_main_scroll_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:layout_marginBottom="48dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:paddingTop="24dp">
+                android:orientation="vertical">
 
-                <TextView
-                    style="@style/TextAppearance.AppCompat.Body1"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/activity_horizontal_margin"
-                    android:text="@string/profile_main_text"/>
+                    android:orientation="vertical">
 
-                <android.support.v7.widget.CardView
-                    android:id="@+id/info_card"
-                    cardCornerRadius="20dp"
-                    cardElevation="20dp"
-                    cardUseCompatPadding="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/card_margin">
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_userinfo_label"
+                        style="@style/ChipLabel"
+                        android:layout_marginBottom="0dp"
+                        android:text="@string/user_info"
+                        app:chipBackgroundColor="@color/transparent"
+                        app:chipIcon="@drawable/vct_account"
+                        app:chipStrokeColor="?attr/colorOnSurface"
+                        app:chipStrokeWidth="1dp" />
 
-                    <LinearLayout
-                        style="@style/Widget.CardContent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                            android:layout_marginTop="@dimen/activity_horizontal_margin"
-                            android:text="User Info"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
-
-                        <TextView
-                            style="@style/TextAppearance.AppCompat.Body1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/profile_name_phone_text"/>
-
-                        <android.support.design.widget.TextInputLayout
-                            android:id="@+id/name_editlayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
-                            android:layout_marginTop="8dp">
-
-                            <android.support.v7.widget.AppCompatEditText
-                                android:id="@+id/name_edit"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:focusable="true"
-                                android:hint="@string/profile_nickname_hint"
-                                android:inputType="textPersonName"
-                                android:maxLength="10"/>
-                        </android.support.design.widget.TextInputLayout>
-
-                        <android.support.design.widget.TextInputLayout
-                            android:id="@+id/phone_editlayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp"
-                            android:layout_marginTop="8dp">
-
-                            <android.support.v7.widget.AppCompatEditText
-                                android:id="@+id/phone_edit"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:focusable="true"
-                                android:hint="@string/profile_phone_hint"
-                                android:inputType="phone"
-                                android:maxLength="14"/>
-                        </android.support.design.widget.TextInputLayout>
-
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:id="@+id/prefs_card"
-                    cardCornerRadius="20dp"
-                    cardElevation="20dp"
-                    cardUseCompatPadding="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/card_margin">
-
-                    <LinearLayout
-                        style="@style/Widget.CardContent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                            android:text="Preferences"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
-
-                        <TextView
-                            style="@style/TextAppearance.AppCompat.Body1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                            android:layout_marginTop="@dimen/activity_horizontal_margin"
-                            android:text="Have you ever owned any of these?"/>
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/info_card"
+                        style="@style/card_style"
+                        app:cardCornerRadius="@dimen/card_corner_rad"
+                        app:cardElevation="@dimen/card_elevation"
+                        app:cardUseCompatPadding="true">
 
                         <LinearLayout
+                            style="@style/Widget.CardContent"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:weightSum="3">
-
-                            <CheckBox
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Nexus"/>
-
-                            <CheckBox
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Android TV"/>
-
-                            <CheckBox
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="Android Wear"/>
-
-                        </LinearLayout>
-
-
-                        <TextView
-                            style="@style/TextAppearance.AppCompat.Body1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                            android:layout_marginTop="@dimen/activity_horizontal_margin"
-                            android:text="Which is your favorite device manufacturer?"/>
-
-                        <RadioGroup
-                            android:id="@+id/radioSex"
-                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
-                            <RadioButton
-                                android:id="@+id/radioAsus"
-                                android:layout_width="wrap_content"
+                            <TextView
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Asus"/>
+                                android:text="@string/profile_name_phone_text"
+                                android:textAppearance="?textAppearanceBody1" />
 
-                            <RadioButton
-                                android:id="@+id/radioHtc"
-                                android:layout_width="wrap_content"
+                            <!-- There is lots you can do with the native controls -->
+                            <!-- https://material.io/develop/android/components/text-input-layout/ -->
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/name_editlayout"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:checked="true"
-                                android:text="HTC"/>
+                                android:layout_marginTop="16dp"
+                                android:hint="@string/profile_nickname_hint"
+                                app:counterEnabled="true"
+                                app:counterMaxLength="10">
 
-                            <RadioButton
-                                android:id="@+id/radioMoto"
-                                android:layout_width="wrap_content"
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/name_edit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:focusable="true"
+                                    android:inputType="textPersonName"
+                                    android:maxLength="20" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/phone_editlayout"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Motorola"/>
+                                android:layout_marginBottom="8dp"
+                                android:hint="@string/profile_phone_hint">
 
-                            <RadioButton
-                                android:id="@+id/radioOnePlus"
-                                android:layout_width="wrap_content"
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/phone_edit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:focusable="true"
+                                    android:inputType="phone"
+                                    android:maxLength="14" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/password_editlayout"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="One Plus One"/>
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:hint="@string/enter_a_password"
+                                app:passwordToggleEnabled="true">
 
-                            <RadioButton
-                                android:id="@+id/radioSamsung"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Samsung"/>
+                                <androidx.appcompat.widget.AppCompatEditText
+                                    android:id="@+id/password_edit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:focusable="true"
+                                    android:inputType="textPassword"
+                                    android:maxLength="8" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
 
-                        </RadioGroup>
-
-                        <TextView
-                            style="@style/TextAppearance.AppCompat.Body1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                            android:layout_marginTop="@dimen/activity_horizontal_margin"
-                            android:text="Where do you live?"/>
-
-                        <Spinner
-                            android:id="@+id/android_spinner"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:entries="@array/country_arrays"/>
-
-                        <TextView
-                            style="@style/TextAppearance.AppCompat.Body1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                            android:layout_marginTop="@dimen/activity_horizontal_margin"
-                            android:text="Rate your feelings about Android"/>
-
-                        <RatingBar
-                            android:id="@+id/android_rating"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-
-
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:id="@+id/profile_pic_card"
-                    cardCornerRadius="20dp"
-                    cardElevation="20dp"
-                    cardUseCompatPadding="true"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/card_margin">
+                    android:orientation="vertical">
 
-                    <LinearLayout
-                        style="@style/Widget.CardContent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center">
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_preference_label"
+                        style="@style/ChipLabel"
+                        android:layout_marginBottom="0dp"
+                        android:text="@string/darkmode"
+                        app:chipBackgroundColor="@color/transparent"
+                        app:chipIcon="@drawable/vct_brightness"
+                        app:chipStrokeColor="?attr/colorOnSurface"
+                        app:chipStrokeWidth="1dp" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_account_lg"/>
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/darkmode_card"
+                        style="@style/card_style"
+                        app:cardCornerRadius="@dimen/card_corner_rad"
+                        app:cardElevation="@dimen/card_elevation"
+                        app:cardUseCompatPadding="true">
 
-                        <Button
-                            android:id="@+id/profile_pic_button"
+                        <LinearLayout
+                            style="@style/Widget.CardContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                style="?textAppearanceBody1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                                android:text="@string/dark_mode_preference" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="3">
+
+                                <RadioGroup
+                                    android:id="@+id/darkmode_group"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <RadioButton
+                                        android:id="@+id/radio_light"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/light" />
+
+                                    <RadioButton
+                                        android:id="@+id/radio_dark"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:checked="true"
+                                        android:text="@string/dark" />
+
+                                    <RadioButton
+                                        android:id="@+id/radio_setting"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/system_setting" />
+
+                                </RadioGroup>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_survey_label"
+                        style="@style/ChipLabel"
+                        android:layout_marginBottom="0dp"
+                        android:text="@string/survey"
+                        app:chipBackgroundColor="@color/transparent"
+                        app:chipIcon="@drawable/vct_survey"
+                        app:chipStrokeColor="?attr/colorOnSurface"
+                        app:chipStrokeWidth="1dp" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/prefs_card"
+                        style="@style/card_style"
+                        app:cardCornerRadius="@dimen/card_corner_rad"
+                        app:cardElevation="@dimen/card_elevation"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            style="@style/Widget.CardContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                style="?textAppearanceBody1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                                android:text="@string/have_you_ever_owned_any_of_these" />
+
+                            <CheckBox
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/asus" />
+
+                            <CheckBox
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/htc" />
+
+                            <CheckBox
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/motorola" />
+
+                            <CheckBox
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/one_plus_one" />
+
+                            <CheckBox
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/samsung" />
+
+                            <TextView
+                                style="?textAppearanceBody1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                                android:text="@string/where_do_you_live" />
+
+                            <Spinner
+                                android:id="@+id/android_spinner"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:entries="@array/country_arrays" />
+
+                            <TextView
+                                style="?textAppearanceBody1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                                android:text="@string/rate_your_feelings_about_android" />
+
+                            <RatingBar
+                                android:id="@+id/android_rating"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                            <TextView
+                                style="?textAppearanceBody1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                                android:text="@string/when_did_you_get_your_first_android_phone" />
+
+                            <DatePicker
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/profileimg_chip"
+                        style="@style/ChipLabel"
+                        android:text="@string/profile_picture"
+                        app:chipBackgroundColor="@color/transparent"
+                        app:chipIcon="@drawable/vct_camera"
+                        app:chipStrokeColor="?attr/colorOnSurface"
+                        app:chipStrokeWidth="1dp" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/profile_pic_card"
+                        style="@style/card_style"
+                        app:cardCornerRadius="@dimen/card_corner_rad"
+                        app:cardElevation="@dimen/card_elevation"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            style="@style/Widget.CardContent"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Change Profile Picture"/>
+                            android:gravity="center">
 
+                            <ImageView
+                                android:layout_width="72dp"
+                                android:layout_height="72dp"
+                                android:layout_marginBottom="16dp"
+                                android:contentDescription="@string/account_circle"
+                                app:srcCompat="@drawable/vct_account_circle" />
+
+                            <Button
+                                android:id="@+id/profile_pic_button"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_button"
+                                android:text="@string/change_profile_picture" />
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/notification_chip"
+                        style="@style/ChipLabel"
+                        android:text="@string/notifications"
+                        app:chipBackgroundColor="@color/transparent"
+                        app:chipIcon="@drawable/vct_notifications"
+                        app:chipStrokeColor="?attr/colorOnSurface"
+                        app:chipStrokeWidth="1dp" />
+
+                    <TextView
+                        style="?textAppearanceBody1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:text="@string/notif_at_intervals" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <Button
+                            android:id="@+id/notifstart_button_start"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_button"
+                            android:text="@string/start_notifications" />
+
+                        <Button
+                            android:id="@+id/notifstart_button_end"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_button"
+                            android:text="@string/stop_notifications" />
                     </LinearLayout>
-                </android.support.v7.widget.CardView>
-            </LinearLayout>
-        </android.support.v4.widget.NestedScrollView>
 
-        <!-- app:layout_anchor="@id/info_card"
-            app:layout_anchorGravity="top|right|end" -->
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/bottom_button_chip"
+                        style="@style/ChipLabel"
+                        android:text="@string/text_scale_demo"
+                        app:chipBackgroundColor="@color/transparent"
+                        app:chipIcon="@drawable/vct_text_scale"
+                        app:chipStrokeColor="?attr/colorOnSurface"
+                        app:chipStrokeWidth="1dp" />
+
+                    <Button
+                        android:id="@+id/show_bottom_sheet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/bg_button"
+                        android:text="@string/show_text_scale_bottom_sheet" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_card_chip"
+                        style="@style/ChipLabel"
+                        android:layout_marginBottom="0dp"
+                        android:text="@string/chip_demo"
+                        app:chipBackgroundColor="@color/transparent"
+                        app:chipIcon="@drawable/vct_chip"
+                        app:chipStrokeColor="?attr/colorOnSurface"
+                        app:chipStrokeWidth="1dp" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/chip_card"
+                        style="@style/card_style"
+                        app:cardCornerRadius="@dimen/card_corner_rad"
+                        app:cardElevation="@dimen/card_elevation"
+                        app:cardUseCompatPadding="true"
+                        tools:showIn="@layout/activity_user">
+
+                        <LinearLayout
+                            style="@style/Widget.CardContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:text="@string/chips_are_compact_elements_that_represent_an_input_attribute_or_action"
+                                android:textAppearance="?textAppearanceBody1" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:text="@string/action_trigger_an_action_on_main_content"
+                                android:textAppearance="?textAppearanceSubtitle2" />
+
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/action_group"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/action1"
+                                    style="@style/Widget.MaterialComponents.Chip.Action"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/add"
+                                    app:chipStrokeColor="?attr/colorOnSurface"
+                                    app:chipIcon="@drawable/vct_add"
+                                    app:chipStrokeWidth="1dp"/>
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/action2"
+                                    style="@style/Widget.MaterialComponents.Chip.Action"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/save"
+                                    app:chipIcon="@drawable/vct_save"
+                                    app:chipStrokeColor="?attr/colorOnSurface"
+                                    app:chipStrokeWidth="1dp"
+                                    app:chipIconTint="@color/grey_900" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/action3"
+                                    style="@style/Widget.MaterialComponents.Chip.Action"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/set_alarm"
+                                    app:chipIcon="@drawable/vct_alarm"
+                                    app:chipStrokeWidth="1dp"
+                                    app:chipStrokeColor="?attr/colorOnSurface"/>
+
+                            </com.google.android.material.chip.ChipGroup>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:background="@color/grey_200" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:text="@string/choice_single_choice_from_2_or_more_options"
+                                android:textAppearance="?textAppearanceSubtitle2" />
+
+                            <!-- If a ChipGroup is using single line, it MUST have a Scroll view wrappting it -->
+                            <HorizontalScrollView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <com.google.android.material.chip.ChipGroup
+                                    android:id="@+id/filter1_group"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    app:singleLine="true"
+                                    app:singleSelection="true">
+
+                                    <com.google.android.material.chip.Chip
+                                        android:id="@+id/choice_item1"
+                                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:chipStrokeColor="?attr/colorOnSurface"
+                                        app:chipStrokeWidth="1dp"
+                                        android:text="@string/ldpi" />
+
+                                    <com.google.android.material.chip.Chip
+                                        android:id="@+id/choice_item2"
+                                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:chipStrokeColor="?attr/colorOnSurface"
+                                        app:chipStrokeWidth="1dp"
+                                        android:text="@string/mdpi" />
+
+                                    <com.google.android.material.chip.Chip
+                                        android:id="@+id/choice_item3"
+                                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:chipStrokeColor="?attr/colorOnSurface"
+                                        app:chipStrokeWidth="1dp"
+                                        android:text="@string/hdpi" />
+
+                                    <com.google.android.material.chip.Chip
+                                        android:id="@+id/choice_item4"
+                                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:chipStrokeColor="?attr/colorOnSurface"
+                                        app:chipStrokeWidth="1dp"
+                                        android:text="@string/xhdpi" />
+
+                                    <com.google.android.material.chip.Chip
+                                        android:id="@+id/choice_item5"
+                                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:chipStrokeColor="?attr/colorOnSurface"
+                                        app:chipStrokeWidth="1dp"
+                                        android:text="@string/xxhdpi" />
+
+                                    <com.google.android.material.chip.Chip
+                                        android:id="@+id/choice_item6"
+                                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:chipStrokeColor="?attr/colorOnSurface"
+                                        app:chipStrokeWidth="1dp"
+                                        android:text="@string/xxxhdpi" />
+
+                                    <com.google.android.material.chip.Chip
+                                        android:id="@+id/choice_item7"
+                                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:chipStrokeColor="?attr/colorOnSurface"
+                                        app:chipStrokeWidth="1dp"
+                                        android:text="@string/nodpi" />
+
+                                </com.google.android.material.chip.ChipGroup>
+                            </HorizontalScrollView>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:background="@color/grey_200" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:text="@string/filter_apply_criteria_to_a_selection"
+                                android:textAppearance="?textAppearanceSubtitle2" />
+
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/filter2_group"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/filter2_item1"
+                                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/item1"
+                                    app:chipStrokeColor="?attr/colorOnSurface"
+                                    app:chipIcon="@drawable/vct_location_pin"
+                                    app:chipStrokeWidth="1dp" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/filter2_item2"
+                                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:chipStrokeColor="?attr/colorOnSurface"
+                                    app:chipStrokeWidth="1dp"
+                                    android:text="@string/item2" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/filter2_item3"
+                                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:chipStrokeColor="?attr/colorOnSurface"
+                                    app:chipStrokeWidth="1dp"
+                                    android:text="@string/item3" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/filter2_item4"
+                                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:chipStrokeColor="?attr/colorOnSurface"
+                                    app:chipStrokeWidth="1dp"
+                                    android:text="@string/item4" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/filter2_item5"
+                                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:chipStrokeColor="?attr/colorOnSurface"
+                                    app:chipStrokeWidth="1dp"
+                                    android:text="@string/item5" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/filter2_item6"
+                                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:chipStrokeColor="?attr/colorOnSurface"
+                                    app:chipStrokeWidth="1dp"
+                                    android:text="@string/item6" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/filter2_item7"
+                                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:chipStrokeColor="?attr/colorOnSurface"
+                                    app:chipStrokeWidth="1dp"
+                                    android:text="@string/item7" />
+
+                            </com.google.android.material.chip.ChipGroup>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:background="@color/grey_200" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:text="@string/input_information_used_in_fields"
+                                android:textAppearance="?textAppearanceSubtitle2" />
+
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/chipgroup_entry"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:singleSelection="true">
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/chip_entry1"
+                                    style="@style/Widget.MaterialComponents.Chip.Entry"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/transit"
+                                    app:chipIcon="@drawable/vct_train"
+                                    app:rippleColor="@color/yellow_500" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/chip_entry2"
+                                    style="@style/Widget.MaterialComponents.Chip.Entry"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/mike"
+                                    app:chipIcon="@drawable/vct_account"
+                                    app:rippleColor="@color/yellow_500" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/chip_entry3"
+                                    style="@style/Widget.MaterialComponents.Chip.Entry"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/cost"
+                                    app:chipIcon="@drawable/vct_cost"
+                                    app:rippleColor="@color/yellow_500" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/chip_entry4"
+                                    style="@style/Widget.MaterialComponents.Chip.Entry"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/denver"
+                                    app:chipIcon="@drawable/vct_location_pin" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/chip_entry5"
+                                    style="@style/Widget.MaterialComponents.Chip.Entry"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/business"
+                                    app:chipIcon="@drawable/vct_business" />
+                            </com.google.android.material.chip.ChipGroup>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="8dp"
+                                android:background="@color/grey_200" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/chip_editlayout"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:hint="@string/chip_content"
+                                app:counterMaxLength="10"
+                                app:passwordToggleDrawable="@drawable/vct_add"
+                                app:passwordToggleEnabled="true">
+
+                                <EditText
+                                    android:id="@+id/chip_edit"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:focusable="true"
+                                    android:inputType="text"
+                                    android:maxLength="10"
+                                    android:autofillHints="Manually entered chip"/>
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chip_action_custom"
+                                style="@style/Widget.MaterialComponents.Chip.Action"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/save_state"
+                                android:textColor="?attr/colorOnPrimary"
+                                app:chipBackgroundColor="@color/fab_selector"
+                                app:chipIcon="@drawable/vct_add"
+                                app:chipStrokeColor="?attr/colorOnSurface"
+                                app:chipStrokeWidth="1dp"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <!-- Bottom Sheet Layout With Scale Text Info -->
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_rounded"
+            android:clipToPadding="true"
+            android:elevation="@dimen/card_elevation"
+            android:paddingBottom="96dp"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+            tools:showIn="@layout/activity_user">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textscale_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/text_font_scale"
+                        android:textAppearance="?textAppearanceHeadline6" />
+
+                    <ImageButton
+                        android:id="@+id/textscale_close"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:contentDescription="@string/carat_up"
+                        android:background="@drawable/vct_carat_up" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/textscale_h1"
+                    style="@style/TextScaleStyle"
+                    android:text="@string/textscale_label_h1"
+                    android:textAppearance="?textAppearanceHeadline1" />
+
+                <TextView
+                    android:id="@+id/textscale_h2"
+                    style="@style/TextScaleStyle"
+                    android:text="@string/textscale_label_h2"
+                    android:textAppearance="?textAppearanceHeadline2" />
+
+                <TextView
+                    android:id="@+id/textscale_h3"
+                    style="@style/TextScaleStyle"
+                    android:text="@string/textscale_label_h3"
+                    android:textAppearance="?textAppearanceHeadline3" />
+
+                <TextView
+                    android:id="@+id/textscale_h4"
+                    style="@style/TextScaleStyle"
+                    android:text="@string/textscale_label_h4"
+                    android:textAppearance="?textAppearanceHeadline4" />
+
+                <TextView
+                    android:id="@+id/textscale_h5"
+                    style="@style/TextScaleStyle"
+                    android:text="@string/textscale_label_h5"
+                    android:textAppearance="?textAppearanceHeadline5" />
+
+                <TextView
+                    android:id="@+id/textscale_h6"
+                    style="@style/TextScaleStyle"
+                    android:onClick="scaleTextItemClicked"
+                    android:text="@string/textscale_label_h6"
+                    android:textAppearance="?textAppearanceHeadline6" />
+
+                <TextView
+                    android:id="@+id/textscale_subtitle1"
+                    style="@style/TextScaleStyle"
+                    android:text="@string/textscale_label_subtitle1"
+                    android:textAppearance="?textAppearanceSubtitle1" />
+
+                <TextView
+                    android:id="@+id/textscale_subtitle2"
+                    style="@style/TextScaleStyle"
+                    android:text="@string/textscale_label_subtitle2"
+                    android:textAppearance="?textAppearanceSubtitle2" />
+
+                <TextView
+                    android:id="@+id/textscale_body1"
+                    style="@style/TextScaleStyle"
+                    android:text="@string/textscale_label_body1"
+                    android:textAppearance="?textAppearanceBody1" />
+
+                <TextView
+                    android:id="@+id/textscale_body2"
+                    style="@style/TextScaleStyle"
+                    android:text="@string/textscale_label_body2"
+                    android:textAppearance="?textAppearanceBody2" />
+
+                <TextView
+                    android:id="@+id/textscale_button"
+                    style="@style/TextScaleStyle"
+                    android:text="@string/textscale_label_button"
+                    android:textAppearance="?textAppearanceButton" />
+
+                <TextView
+                    android:id="@+id/textscale_caption"
+                    style="@style/TextScaleStyle"
+                    android:text="@string/textscale_label_caption"
+                    android:textAppearance="?textAppearanceCaption" />
+
+                <TextView
+                    android:id="@+id/textscale_overline"
+                    style="@style/TextScaleStyle"
+                    android:text="@string/textscale_label_overline"
+                    android:textAppearance="?textAppearanceOverline" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottom_appbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height"
+            android:layout_gravity="bottom"
+            app:backgroundTint="?attr/colorPrimary"
+            app:fabAlignmentMode="center"
+            app:fabCradleMargin="8dp"
+            app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+            app:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/user_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:layout_margin="@dimen/fab_margin"
-            android:src="@drawable/ic_save"/>
+            android:tint="?attr/colorSecondary"
+            app:layout_anchor="@+id/bottom_appbar"
+            app:srcCompat="@drawable/vct_save"
+            app:tint="?attr/colorOnSecondary" />
 
-    </android.support.design.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <android.support.design.widget.NavigationView
+    <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header"
-        app:menu="@menu/drawer_actions"/>
+        app:menu="@menu/drawer_profile_actions" />
 
-</android.support.v4.widget.DrawerLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

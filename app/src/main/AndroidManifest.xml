@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.support.android.designlibdemo" >
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.support.android.designlibdemo">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.DesignDemo" >
-        <activity android:name="com.designdemo.uaha.MainActivity" >
+        android:theme="@style/Base.Theme.DesignDemo"
+        android:name="com.designdemo.uaha.HistorianApplication"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name="com.designdemo.uaha.view.product.ProductActivity"
+            android:theme="@style/Base.Theme.DesignDemo.Launcher"
+            android:launchMode="singleTop"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,16 +29,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.designdemo.uaha.DetailActivity"
-            android:parentActivityName="com.designdemo.uaha.MainActivity" >
+            android:name="com.designdemo.uaha.view.detail.DetailActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.designdemo.uaha.view.product.ProductActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.designdemo.uaha.MainActivity" />
+                android:value="com.designdemo.uaha.view.product.ProductActivity" />
+            <meta-data
+                android:name="android.app.default_searchable"
+                android:value=".SearchableActivity" />
         </activity>
         <activity
-            android:name="com.designdemo.uaha.UserActivity"
-            android:label="@string/title_activity_user" >
-        </activity>
+            android:name="com.designdemo.uaha.view.user.UserActivity"
+            android:label="@string/title_activity_user" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity
+            android:name="com.designdemo.uaha.view.demo.BottomNavActivity"
+            android:label="@string/title_activity_bottom_bav" />
+        <activity
+            android:name="com.designdemo.uaha.view.demo.MotionLayoutActivity"
+            android:label="@string/title_activity_motion_layout"/>
     </application>
 
 </manifest>

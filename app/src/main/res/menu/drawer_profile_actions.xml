@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/vct_android"
+            android:title="@string/nav_os"/>
+        <item
+            android:id="@+id/nav_devices"
+            android:icon="@drawable/vct_device"
+            android:title="@string/nav_devices"/>
+        <item
+            android:id="@+id/nav_favorites"
+            android:icon="@drawable/vct_fav"
+            android:title="@string/nav_fav"/>
+    </group>
+
+    <item android:title="Developer Links">
+        <menu>
+            <item
+                android:id="@+id/nav_homepage"
+                android:icon="@drawable/vct_ableandroid_icon"
+                android:title="@string/mikewolfson_com"/>
+
+            <item
+                android:id="@+id/nav_playlink"
+                android:icon="@drawable/vct_vikinghelmet"
+                android:title="@string/play_store_beta" />
+
+            <item
+                android:id="@+id/nav_githublink"
+                android:icon="@drawable/vct_github"
+                android:title="@string/source_code" />
+        </menu>
+    </item>
+
+    <item android:title="@string/nav_links">
+        <menu>
+            <item
+                android:id="@+id/nav_link1"
+                android:icon="@drawable/vct_link"
+                android:title="@string/nav_link1"/>
+            <item
+                android:id="@+id/nav_link2"
+                android:icon="@drawable/vct_link"
+                android:title="@string/nav_link2"/>
+        </menu>
+    </item>
+
+</menu>

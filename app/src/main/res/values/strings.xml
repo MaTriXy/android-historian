@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Android Historian</string>
+    <string name="app_name">Historian</string>
 
     <string name="ipsum_short">Android rocks!</string>
     <string name="ipsum_med">Android has 80% of global market-share and continues to grow</string>
@@ -8,6 +8,7 @@
 
     <string name="checkin">Checkin</string>
     <string name="menu_settings">Settings</string>
+    <string name="menu_save">Save</string>
     <string name="favorites_content">Is there an Android you particularly loved? Save it to your favorites and it will appear in a special list, which is pretty cool, huh?!</string>
     <string name="favorite_title">Favorite</string>
     <string name="favorite_confirm">Your favorite has been changed</string>
@@ -21,13 +22,14 @@
     <string name="nav_fav">Favorites</string>
     <string name="nav_account">Profile</string>
     <string name="nav_link1">Android Home Page</string>
-    <string name="nav_link2">Developer Home</string>
+    <string name="nav_link2">Material Design</string>
     <string name="nav_links">Links</string>
-    <string name="profile_main_text">Enter some information about yourself (Name and Phone are required):</string>
-    <string name="profile_name_phone_text">1) Have a nickname you want to associate?\n2) Enter any phone number - to verify you are a real person.</string>
-    <string name="profile_nickname_hint">Nickname (4 - 10 Chars)</string>
+    <string name="profile_main_text">Enter account information</string>
+    <string name="profile_name_phone_text">Name and Phone are required to save</string>
+    <string name="profile_nickname_hint">Nickname (4 – 10 Chars)</string>
     <string name="profile_phone_hint">Enter ANY phone number</string>
     <string name="picture_dialog_title">Profile Picture Selector</string>
+    <string name="profile_saved_confirm">Your profile has been updated</string>
     <string name="picture_dialog_text">In the future you will be able to set your profile picture using this Material Dialog!</string>
     <string name="picture_dialog_button">Dismiss</string>
     <string name="profile_snackbar">Your profile has been saved</string>
@@ -36,6 +38,153 @@
     <string name="android_supports_vectors">Isn\'t it cool that Android supports Vector Graphics!!!</string>
 
     <string name="transition_string">transitionString</string>
+    <string name="undo">Undo</string>
+    <string name="at_least_4_char">Must be 4 - 10 characters</string>
+    <string name="name_input_error">Name input error</string>
+    <string name="invalid_phone">Invalid Phone</string>
+    <string name="invalid_password">Invalid Password</string>
+    <string name="phone_input_error">Phone input error</string>
+    <string name="os_version">OS Version</string>
+    <string name="devices">Device</string>
+    <string name="favorites">Favorites</string>
+    <string name="header_version">Version: %1$s (%2$d)</string>
+
+    <!-- Scale Text Labels-->
+    <string name="letter_spacing">Letter Spacing</string>
+    <string name="size">Size</string>
+    <string name="case_text">Case</string>
+    <string name="font_text">Font</string>
+    <string name="sentence">Sentence</string>
+    <string name="all_caps">ALL CAPS</string>
+    <string name="regular">Regular</string>
+    <string name="light_font">Light</string>
+    <string name="medium">Medium</string>
+    <string name="text_appearance_style_example">\@style/TextAppearance.MaterialComponents.%1$s\n---\nandroid:textAppearance=\"?textAppearance%1$s\"</string>
+
+    <!-- Letter Spacing  -->
+    <string name="ls_neg1_5">-1.5</string>
+    <string name="ls_neg5">-0.5</string>
+    <string name="ls_zero">0</string>
+    <string name="ls_25">0.25</string>
+    <string name="ls_15">0.15</string>
+    <string name="ls_1">0.1</string>
+    <string name="ls_75">0.75</string>
+    <string name="ls_5">0.5</string>
+    <string name="ls_4">0.4</string>
+    <string name="ls_1dot5">1.5</string>
+
+    <!-- Scale Text Values-->
+    <string name="st_h1">Headline1</string>
+    <string name="st_h2">Headline2</string>
+    <string name="st_h3">Headline3</string>
+    <string name="st_h4">Headline4</string>
+    <string name="st_h5">Headline5</string>
+    <string name="st_h6">Headline6</string>
+    <string name="st_subtitle1">Subtitle1</string>
+    <string name="st_subtitle2">Subtitle2</string>
+    <string name="st_body1">Body1</string>
+    <string name="st_body2">Body2</string>
+    <string name="st_button">Button</string>
+    <string name="st_caption">Caption</string>
+    <string name="st_overline">Overline</string>
+    <string name="show_text_scale_bottom_sheet">Show Text Scale Bottom Sheet</string>
+
+    <!-- Chips -->
+    <string name="chips">Chips</string>
+    <string name="action_trigger_an_action_on_main_content">Action - trigger an action on main content</string>
+    <string name="add">Add</string>
+    <string name="save">Save</string>
+    <string name="set_alarm">Set Alarm</string>
+    <string name="choice_single_choice_from_2_or_more_options">Choice - single choice from 2 or more options</string>
+    <string name="ldpi">ldpi</string>
+    <string name="mdpi">mdpi</string>
+    <string name="hdpi">hdpi</string>
+    <string name="xhdpi">xhdpi</string>
+    <string name="xxhdpi">xxhdpi</string>
+    <string name="xxxhdpi">xxxhdpi</string>
+    <string name="nodpi">nodpi</string>
+    <string name="filter_apply_criteria_to_a_selection">Filter - apply criteria to a selection</string>
+    <string name="item1">Item1</string>
+    <string name="item2">Item2</string>
+    <string name="item3">Item3</string>
+    <string name="item4">Item4</string>
+    <string name="item5">Item5</string>
+    <string name="item6">Item6</string>
+    <string name="item7">Item7</string>
+    <string name="input_information_used_in_fields">Input - information used in fields</string>
+    <string name="transit">Transit</string>
+    <string name="mike">Mike</string>
+    <string name="cost">Cost</string>
+    <string name="denver">Denver</string>
+    <string name="business">Business</string>
+    <string name="chip_content">Chip Content</string>
+    <string name="save_state">Save State</string>
+
+    <!-- Profile Strings -->
+    <string name="user_info">User Info</string>
+    <string name="enter_a_password">Enter an 8 letter Password</string>
+    <string name="dark_mode_preference">Which mode do you prefer?</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    <string name="system_setting">System Controlled</string>
+    <string name="have_you_ever_owned_any_of_these">Have you ever owned any of these?</string>
+    <string name="asus">Asus</string>
+    <string name="htc">HTC</string>
+    <string name="motorola">Motorola</string>
+    <string name="one_plus_one">One Plus One</string>
+    <string name="samsung">Samsung</string>
+    <string name="where_do_you_live">Where do you live?</string>
+    <string name="rate_your_feelings_about_android">Rate your feelings about Android</string>
+    <string name="change_profile_picture">Change Profile Picture</string>
+    <string name="refresh">Refresh</string>
+    <string name="find_os">Find OS</string>
+    <string name="shuffle">Shuffle</string>
+    <string name="add_item">Add Item</string>
+
+    <!-- Text Scale -->
+    <string name="textscale_label_h1">Headline1</string>
+    <string name="textscale_label_h2">Headline2</string>
+    <string name="textscale_label_h3">Headline3</string>
+    <string name="textscale_label_h4">Headline4</string>
+    <string name="textscale_label_h5">Headline5</string>
+    <string name="textscale_label_h6">Headline6</string>
+    <string name="textscale_label_subtitle1">Subtitle1</string>
+    <string name="textscale_label_subtitle2">Subtitle2</string>
+    <string name="textscale_label_body1">Body1</string>
+    <string name="textscale_label_body2">Body2</string>
+    <string name="textscale_label_button">Button</string>
+    <string name="textscale_label_caption">Caption</string>
+    <string name="textscale_label_overline">Overline</string>
+    <string name="font">Font</string>
+    <string name="case_string">Case</string>
+    <string name="sp_96">96</string>
+    <string name="sp_60">60</string>
+    <string name="sp_48">48</string>
+    <string name="sp_34">34</string>
+    <string name="sp_24">24</string>
+    <string name="sp_20">20</string>
+    <string name="sp_16">16</string>
+    <string name="sp_14">14</string>
+    <string name="sp_12">12</string>
+    <string name="sp_10">10</string>
+    <string name="unset">Unset</string>
+
+    <!-- Scale Text Arrays-->
+    <string-array name="scaletext_array">
+        <item>Headline1</item>
+        <item>Headline2</item>
+        <item>Headline3</item>
+        <item>Headline4</item>
+        <item>Headline5</item>
+        <item>Headline6</item>
+        <item>Subtitle1</item>
+        <item>Subtitle2</item>
+        <item>Body1</item>
+        <item>Body2</item>
+        <item>Button</item>
+        <item>Caption</item>
+        <item>Overline</item>
+    </string-array>
 
     <string-array name="country_arrays">
         <item>Malaysia</item>
@@ -47,4 +196,114 @@
         <item>New Zealand</item>
         <item>India</item>
     </string-array>
+
+    <string-array name="device_names">
+        <item>HTC%20G1</item>
+        <item>Samsung%20Galaxy%20Nexus</item>
+        <item>HTC%20Nexus%201</item>
+        <item>LG%20Nexus%204</item>
+        <item>LG%20Nexus%205</item>
+        <item>ASUS%20Nexus%207</item>
+        <item>HTC%20Nexus%209</item>
+        <item>Samsung%20Nexus%20S</item>
+        <item>Pixel-Google</item>
+        <item>Pixel XL-Google</item>
+        <item>Pixel2-Google</item>
+        <item>Pixel2 XL-Google</item>
+        <item>Pixel3-Google</item>
+        <item>Pixel3 XL-Google</item>
+    </string-array>
+
+    <!-- BottomNavView -->
+    <string name="title_activity_bottom_bav">Fake Help Activity</string>
+    <string name="bottomnav1">Help1</string>
+    <string name="bottomnav2">Help2</string>
+    <string name="bottomnav3">Help3</string>
+    <string name="bottomnavtext1">If this was a real App, there would be Help feedback here!</string>
+    <string name="bottomnavtext2">Hopefully the app is clear enough that you do not need help</string>
+    <string name="bottomnavtext3">If you do need help, feel free to contact me directly</string>
+
+    <!-- Device Info -->
+    <string name="spec_release_date">Release Date</string>
+    <string name="spec_multitouch">Multitouch</string>
+    <string name="spec_weight">Weight</string>
+    <string name="spec_size">Size</string>
+    <string name="spec_dimen">Dimensions</string>
+    <string name="spec_cpu">CPU</string>
+    <string name="spec_memory">Memory</string>
+    <string name="spec_camera">Camera</string>
+    <string name="spec_video">Video</string>
+    <string name="spec_display">Display</string>
+    <string name="spec_resolution">Resolution</string>
+    <string name="device_info">Device Info</string>
+    <string name="add_fav_text">Add favorites from the Details Screen</string>
+    <string name="getting_os_info">Getting OS Info</string>
+    <string name="getting_device_info">Getting Device Info</string>
+    <string name="gathering_data">Gathering Data</string>
+
+
+    <!-- Detail Info -->
+    <string name="percent_40">40%</string>
+    <string name="percent_20">20%</string>
+    <string name="percent_60">60%</string>
+    <string name="primary_colors_desc">This will display the primary colors of the current image</string>
+    <string name="percentage">Percentage</string>
+    <string name="guideline_explain">This shows how to use Guidelines, instead of the deprecated Percentage layout</string>
+
+    <!-- Motion Layout -->
+    <string name="title_activity_motion_layout">MotionLayoutActivity</string>
+    <string name="pull_down_to_see_the_new_logo_or">Pull down to see the new logo -or-</string>
+    <string name="launch_animation">Launch Animation</string>
+    <string name="the">The</string>
+
+    <!-- Detail Activity -->
+    <string name="edit">Edit</string>
+    <string name="specifications">Specifications</string>
+    <string name="wiki">Wiki</string>
+    <string name="palette">Palette</string>
+    <string name="vibrant">Vibrant</string>
+    <string name="vibrant_dark">Vibrant Dark</string>
+    <string name="vibrant_light">Vibrant Light</string>
+    <string name="muted">Muted</string>
+    <string name="muted_dark">Muted Dark</string>
+    <string name="muted_light">Muted Light</string>
+    <string name="getting_information">Getting Information</string>
+
+    <!-- Profile Activity -->
+    <string name="survey">Survey</string>
+    <string name="when_did_you_get_your_first_android_phone">How long have you loved Android?</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="text_scale_demo">Text Scale Demo</string>
+    <string name="chip_demo">Chip Demo</string>
+    <string name="chips_are_compact_elements_that_represent_an_input_attribute_or_action">Chips are compact elements that represent an input, attribute, or action</string>
+    <string name="text_font_scale">Text Font Scale</string>
+    <string name="demos">Demos</string>
+    <string name="darkmode">Dark Mode</string>
+    <string name="getting_info">Getting info</string>
+    <string name="notifications">Notifications</string>
+
+    <!-- BottomNavView Demo -->
+    <string name="bottomnavview">BottomNavView</string>
+    <string name="motionlayout">MotionLayout</string>
+    <string name="search">Search</string>
+    <string name="os_and_device_historian">OS and Device Historian</string>
+    <string name="notif_at_intervals">This will send a notification at around 15 minute intervals</string>
+    <string name="start_notifications">Start Notifications</string>
+    <string name="stop_notifications">Stop Notifications</string>
+    <string name="play_store_beta">Play Store Beta</string>
+    <string name="mikewolfson_com">AbleAndroid.com</string>
+    <string name="source_code">Source Code (Open)</string>
+    <string name="help">Help</string>
+
+    <!-- Image Content Descriptions-->
+    <string name="backdrop_image">Backdrop Image</string>
+    <string name="account_circle">Account Circle</string>
+    <string name="carat_up">Carat Up</string>
+    <string name="device_item_avatar">Device Item Avatar</string>
+    <string name="favorite_item_avatar">Favorite Item Avatar</string>
+    <string name="os_item_avatar">OS Item Avatar</string>
+    <string name="version">Version:</string>
+
+    <!-- Lost and Found -->
+
 </resources>

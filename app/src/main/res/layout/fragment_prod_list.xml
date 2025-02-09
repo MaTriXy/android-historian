@@ -1,50 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    android:id="@+id/main_content"
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@+id/user_main_coordinator"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true" >
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview"
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/product_recyclerview"
+        android:paddingBottom="48dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/bottom_sheet"
+    <LinearLayout
+        android:id="@+id/product_nodata_layout"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:background="@color/amber_500"
-        android:clipToPadding="true"
-        app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <CheckBox
+            android:id="@+id/product_nodata_img"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:button="@null"
+            android:background="@drawable/bg_fav_green_selector"
+            android:stateListAnimator="@animator/scale"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/product_nodata_text"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="center"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:text="@string/gathering_data"
+            android:visibility="visible" />
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingBottom="16dp"
-                android:paddingLeft="16dp"
-                android:paddingRight="32dp"
-                android:paddingTop="16dp"
-                android:text="@string/android_supports_vectors"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                app:srcCompat="@drawable/bugdroid"
-                tools:ignore="MissingPrefix"/>
-        </LinearLayout>
 
-    </android.support.v4.widget.NestedScrollView>
-
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
